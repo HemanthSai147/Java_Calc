@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages{
+        stage("Build"){
+            steps{
+                dir("Java_Clock"){
+                    sh "mvn clean install"
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                dir("Java_Clock"){
+                    sh "mvn test"
+                }
+            }
+        }
+    }
+}
