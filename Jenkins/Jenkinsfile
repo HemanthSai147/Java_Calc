@@ -5,9 +5,16 @@ tools {
 }
 
     stages{
+        stage("Docker Build"){
+            steps{
+                sh "pwd"
+                sh "ls -al"
+                sh "docker build -t clock-image:${env.BUILD_NUMBER} ."
+            }
+        }
         stage("Build"){
             steps{
-                withMaven(maven: 'maven 3.9.9'){
+                withMaven(maven: 'Maven 3.8.6'){
                 sh "mvn clean package"
                 }
             }
@@ -17,12 +24,6 @@ tools {
                 sh "mvn test"
                 }
         }
-        stage("Docker Build"){
-            steps{
-                sh "pwd"
-                sh "ls -al"
-                sh "docker build -t clock-image:${env.BUILD_NUMBER} ."
-            }
-        }
+        
     }
 }
