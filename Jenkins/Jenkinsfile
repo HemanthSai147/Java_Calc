@@ -1,5 +1,9 @@
 pipeline {
     agent any
+tools{
+    docker 'latest'
+}
+
     stages{
         stage("Build"){
             steps{
@@ -13,6 +17,7 @@ pipeline {
         }
         stage("Docker Build"){
             steps{
+
                 sh "docker build -t clock-image:${env.BUILD_NUMBER} -f /Dockerfile ."
             }
         }
