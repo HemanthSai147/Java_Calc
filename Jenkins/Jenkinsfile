@@ -7,7 +7,7 @@ tools {
     stages{
         stage("Build"){
             steps{
-                withMaven(maven: 'Maven 3.9.9'){
+                withMaven(maven: 'maven 3.9.9'){
                 sh "mvn clean package"
                 }
             }
