@@ -17,7 +17,8 @@ tools {
         }
         stage("Docker Build"){
             steps{
-
+                sh "pwd"
+                sh "ls -al"
                 sh "docker build -t clock-image:${env.BUILD_NUMBER} -f /Dockerfile ."
             }
         }
